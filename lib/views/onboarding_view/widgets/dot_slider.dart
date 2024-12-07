@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../utilities/app_color.dart';
+
 class DotSlider extends StatelessWidget {
   const DotSlider({super.key, required this.dotSelectedIndex});
   final int dotSelectedIndex;
@@ -9,19 +11,13 @@ class DotSlider extends StatelessWidget {
       width: 80,
       height: 6,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          DotItem(
-            isActiveDot: dotSelectedIndex == 1,
-          ),
-          DotItem(
-            isActiveDot: dotSelectedIndex == 2,
-          ),
-          DotItem(
-            isActiveDot: dotSelectedIndex == 3,
-          ),
-        ],
-      ),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: List.generate(
+            3,
+            (index) => DotItem(
+              isActiveDot: dotSelectedIndex == index,
+            ),
+          )),
     );
   }
 }
@@ -40,7 +36,7 @@ class DotItem extends StatelessWidget {
       height: 6,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        color: isActiveDot ? const Color(0xff12B76A) : const Color(0xffF2F2F2),
+        color: isActiveDot ? AppColor.kGreenColor : AppColor.kGrayColor,
       ),
     );
   }
